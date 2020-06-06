@@ -23,6 +23,11 @@ DROP TABLE IF EXISTS `goal` ;
 CREATE TABLE IF NOT EXISTS `goal` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
+  `description` TEXT NOT NULL,
+  `sticker_url` VARCHAR(1000) NOT NULL,
+  `achieved` TINYINT NOT NULL,
+  `create_date` DATETIME NOT NULL,
+  `category` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -42,7 +47,13 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventdb`;
-INSERT INTO `goal` (`id`, `name`) VALUES (1, 'sample');
+INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (1, 'exercise', 'work out for 30 min every day', 'https://i.imgur.com/cxt6Mw7.png', 0, '2020-06-05 09:26:00', 'physical health');
+INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (2, 'water intake', 'drink at least 8 glasses a day', 'https://i.imgur.com/dlTyBlo.png', 0, '2020-06-05 09:26:00', 'physical health');
+INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (3, 'veggie serving', 'eat at least five servings of veggies a day', 'https://i.imgur.com/xzop3fx.png', 0, '2020-06-05 09:26:00', 'physical health');
+INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (4, 'meditation', 'meditate for 10 minutes', 'https://i.imgur.com/ZPiYKma.png', 0, '2020-06-05 09:26:00', 'mental health');
+INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (5, 'limit screen time', 'limit leisure screen time to 2 hours a day', 'https://i.imgur.com/kcqoryt.png', 0, '2020-06-05 09:26:00', 'mental health');
+INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (6, 'check in with friends', 'text friends and see how they\'re doing', 'https://i.imgur.com/U8Wzl6T.png', 0, '2020-06-05 09:26:00', 'social health');
+INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (7, 'prayer', 'pray for ten minutes a day', 'https://i.imgur.com/rv9QOBt.png', 0, '2020-06-05 09:26:00', 'spirituality');
 
 COMMIT;
 

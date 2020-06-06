@@ -43,7 +43,11 @@ class GoalTest {
 	@Test
 	void test() {
 		assertNotNull(goal);
-		assertEquals("sample", goal.getName());
+		assertEquals("exercise", goal.getName());
+		assertEquals("https://i.imgur.com/cxt6Mw7.png", goal.getStickerUrl());
+		assertEquals(false, goal.isAchieved());
+		assertEquals("2020-06-05T09:26", goal.getCreateDate().toString());
+		assertEquals("physical health", goal.getCategory());
 	}
 
 }
