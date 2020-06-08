@@ -66,4 +66,12 @@ public class GoalServiceImpl implements GoalService {
 		return false;
 	}
 
+	@Override
+	public List<Goal> findByKeyword(String keyword) {
+		
+		List<Goal> goals = repo.findByCategoryLikeOrNameLikeOrDescriptionLike(keyword, keyword, keyword);
+		
+		return goals;
+	}
+
 }

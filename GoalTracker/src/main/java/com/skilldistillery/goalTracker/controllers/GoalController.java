@@ -86,5 +86,10 @@ public class GoalController {
 			response.setStatus(409);
 		}
 	}
+	
+	@GetMapping(path = "goals/search/{keyword}")
+	public List<Goal> findByKeyword(@PathVariable String keyword){
+		return service.findByKeyword(keyword);
+	}
 
 }

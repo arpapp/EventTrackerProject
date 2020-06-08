@@ -11,5 +11,6 @@ public interface GoalService {
 	Goal createGoal(Goal goal);
 	Goal updateGoal(Goal goal, int id);
 	boolean deleteGoal(int id);
+	List<Goal> findByKeyword(String keyword);
 
 }
