@@ -53,7 +53,7 @@ INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `cre
 INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (4, 'meditation', 'meditate for 10 minutes', 'https://i.imgur.com/ZPiYKma.png', 0, '2020-06-05 09:26:00', 'mental health');
 INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (5, 'limit screen time', 'limit leisure screen time to 2 hours a day', 'https://i.imgur.com/kcqoryt.png', 0, '2020-06-05 09:26:00', 'mental health');
 INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (6, 'check in with friends', 'text friends and see how they\'re doing', 'https://i.imgur.com/U8Wzl6T.png', 0, '2020-06-05 09:26:00', 'social health');
-INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (7, 'prayer', 'pray for ten minutes a day', 'https://i.imgur.com/rv9QOBt.png', 0, '2020-06-05 09:26:00', 'spirituality');
+INSERT INTO `goal` (`id`, `name`, `description`, `sticker_url`, `achieved`, `create_date`, `category`) VALUES (7, 'prayer', 'pray for ten minutes a day', 'https://i.imgur.com/rv9QOBt.png', 0, '2020-06-05 09:26:00', 'spiritual health');
 
 COMMIT;
 
