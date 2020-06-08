@@ -72,10 +72,10 @@ public class GoalController {
 		return goal;
 	}
 	
-	@DeleteMapping(path = "goals/{goalsId}")
-	public void deleteGoal(@PathVariable int goalsId, HttpServletResponse response) {
+	@DeleteMapping(path = "goals/{goalId}")
+	public void deleteGoal(@PathVariable int goalId, HttpServletResponse response) {
 		try {
-			if(service.deleteGoal(goalsId)) {
+			if(service.deleteGoal(goalId)) {
 				response.setStatus(204);
 			}
 			else {
