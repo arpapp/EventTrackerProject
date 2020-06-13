@@ -23,6 +23,7 @@ function getAllGoals(){
 				let data = xhr.responseText;
 				let allGoals = JSON.parse(data);
 				displayAllGoals(allGoals);
+				aggregateGoals(allGoals);
 			}
 			else{
 				let divError = document.getElementById("goalList");
@@ -303,7 +304,15 @@ function deleteGoal(goalId){
 
 };
 
-function aggregateGoals(){
-	let goalsArray = 
+function aggregateGoals(allGoals){
+	let counter = 0;
+	for (let i = 0; i < allGoals.length; i ++){
+		counter++
+	}
+
+	let aggregateDiv = document.getElementById("aggregateDiv");
+	let h3 = document.createElement("h3");
+		h3.textContent = "You have " + counter + " goals! You can do it!";
+		aggregateDiv.appendChild(h3);
 }
 
