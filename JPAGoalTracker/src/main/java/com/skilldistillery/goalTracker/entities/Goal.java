@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 public class Goal {
 	
@@ -24,6 +26,7 @@ public class Goal {
 	
 	private boolean achieved;
 	
+	@CreationTimestamp
 	@Column(name = "create_date")
 	private LocalDateTime createDate;
 	

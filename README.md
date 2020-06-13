@@ -11,7 +11,7 @@
 | Goal | POST | api/goals | Create a new goal |
 | Goal | PUT | api/goals/goalId | Update an existing goal |
 | Void | DELETE | goals/goalId | Delete an existing goal |
-| `List<Goal>` | GET | api/goals/search/{keyword} | Search for goals by name, category, or description match |
+| `List<aGoal>` | GET | api/goals/search/{keyword} | Search for goals by name, category, or description match |
 
 ## Overview
 
@@ -30,6 +30,8 @@ This project maintains a MySQL database that houses goal entities. The database 
 - Gradle
 - MySQL
 - MySQL Workbench
+- JavaScript
+- Visual Studio Code
 
 ## Lessons Learned
 
