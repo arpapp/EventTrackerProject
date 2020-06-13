@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Daily Goal Tracker</title>
+<script type = "text/javascript" src="js/script.js"></script>
+</head>
+<body>
+	<h1>Cheese is just a loaf of milk</h1>
+	<div id = "goalList"></div>
+	<div id = "goalCreate">
+		<h3>Wanna add a new goal?</h3>
+		<form name = "goalCreateForm" id = "goalCreateForm">
+			<input type = "text" name = "name" placeholder = "Name of the goal"/>
+			<input type = "text" name = "description" placeholder = "Describe it"/>
+			<input type = "text" name = "stickerUrl" placeholder = "Sticker URL"/>
+			<select name = "achieved">
+				<option value = "true">YES!</option>
+				<option value = "false">Not yet!</option>
+			</select>
+			<select name = "category">
+				<option value = "physical health">Physical Health</option>
+				<option value = "mental health">Mental Health</option>
+				<option value = "social health">Social Health</option>
+				<option value = "spiritual health">Spiritual Health</option>
+				<option value = "other">Other</option>
+			</select>
+			<input type = "submit" name = "createGoalButton" value = "Let's do this!"/>
+		</form>
+	</div>
+	<div id = "goalDetails"></div>
+	<div id = "goalEdit"></div>
+</body>
+</html>
