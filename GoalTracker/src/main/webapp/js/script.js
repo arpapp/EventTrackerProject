@@ -4,7 +4,7 @@ window.addEventListener("load", function(e){
 	init();
 	let createDiv = document.getElementById("goalCreateForm");
 	createDiv.createGoalButton.addEventListener("click", function(e){
-		e.preventDefault
+		e.preventDefault;
 		createGoalObject();
 	});
 });
@@ -44,7 +44,9 @@ function displayAllGoals(allGoals){
 		tableRow.addEventListener("click", function(e){
 			e.preventDefault;
 			getOneGoal(value.id)});
-
+		let id = document.createElement("input");
+			id.type = "hidden";
+			id.value = value.id;
 		let td = document.createElement("td");
 			td.textContent = value.name;
 			tableRow.appendChild(td);
@@ -118,12 +120,24 @@ function getOneGoal(goalId){
 
 
 function displayOneGoal(goal){
+	let descriptionChecker = document.getElementById("descriptionChecker");
+	if(descriptionChecker !== null ){
+		if(goal.description === descriptionChecker.textContent){
+		skip;
+		}
+	}
+	else{
 	let goalDiv = document.getElementById("goalEdit");
 	let h3 = document.createElement("h3");
-		h3.textContent = "Update your goal:"
-		goalDiv.appendChild(h3);
+	h3.textContent = "Update your goal:"
+	goalDiv.appendChild(h3);
 	let updateForm = document.createElement("form");
-		goalDiv.appendChild(updateForm);
+	updateForm.name = "updateForm";
+	goalDiv.appendChild(updateForm);
+	let goalId = document.createElement("input");
+		goalId.type = "hidden";
+		goalId.value = goal.id;
+	updateForm.appendChild(goalId);
 	let goalTable = document.createElement("table");
 	updateForm.appendChild(goalTable);
 	
@@ -136,6 +150,7 @@ function displayOneGoal(goal){
 		tableRow.appendChild(td);
 		let input = document.createElement("input");
 		input.type = "text";
+		input.name = "name";
 		input.value = goal.name;
 		td.appendChild(input);
 		
@@ -143,6 +158,8 @@ function displayOneGoal(goal){
 		tableRow.appendChild(td1);
 		let input1 = document.createElement("input");
 		input1.type = "text";
+		input1.id = "descriptionChecker";
+		input1.name = "description";
 		input1.value = goal.description;
 		td1.appendChild(input1);
 		
@@ -151,6 +168,7 @@ function displayOneGoal(goal){
 		let input2 = document.createElement("input");
 		input2.type = "text";
 		input2.value = goal.stickerUrl;
+		input2.name = "stickerUrl";
 		td2.appendChild(input2);
 		
 		let td3 = document.createElement("td");
@@ -214,7 +232,7 @@ function displayOneGoal(goal){
 		editButton.value = "Update my Goal!";
 		editButton.addEventListener("click", function(e){
 			e.preventDefault;
-			//update function
+			update(goal.id);
 		});
 
 		td5.appendChild(editButton);
@@ -228,11 +246,43 @@ function displayOneGoal(goal){
 			deleteGoal(goal.id);
 		});
 		td5.appendChild(deleteButton);
-		
+	}	
 };
 
-function updateGoal(){
+function update(goalId){
+	console.log("In update");
+	let goal = {};
+	goal.id = goalId;
+	goal.name = updateForm.name.value;
+	goal.description = updateForm.description.value;
+	goal.stickerUrl = updateForm.stickerUrl.value;
+	goal.achieved = updateForm.achieved.value;
+	goal.category = updateForm.category.value;
+	console.log(goal);
+	updateGoal(goalId, goal);
+}
 
+function updateGoal(goalId, updatedGoal){
+	//put the id in the goalconut and mix it all up
+	let xhr = new XMLHttpRequest();
+	xhr.open("PUT", "api/goals/" + goalId );
+
+	xhr.setRequestHeader("Content-type", "application/json");
+	let goalJSONYaDunStringedUp = JSON.stringify(updatedGoal);
+	
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState === 4){
+			if (xhr.status < 300 ){
+				console.log("Updated");
+				let updatedGoalResponse = xhr.responseText;
+				getAllGoals();
+			}
+			else{
+				console.log("Cannot update at this time.")
+			}
+		}	
+	}
+	xhr.send(goalJSONYaDunStringedUp);
 };
 
 function deleteGoal(goalId){
@@ -252,4 +302,8 @@ function deleteGoal(goalId){
 	xhr.send();
 
 };
+
+function aggregateGoals(){
+	let goalsArray = 
+}
 
