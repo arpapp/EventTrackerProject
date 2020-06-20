@@ -6,6 +6,7 @@ export class Goal {
   achieved: boolean;
   createDate: Date;
   category: string;
+  achievedPic: string;
 
   constructor(
     id?: number,
@@ -21,6 +22,7 @@ export class Goal {
     this.stickerUrl = stickerUrl;
     this.achieved = achieved;
     this.category = category;
+    this.achievedPic = this.achieved? "https://i.imgur.com/Z3nQM2X.png" : "https://i.imgur.com/5Rl1NPf.png" ;
   }
 
 }
