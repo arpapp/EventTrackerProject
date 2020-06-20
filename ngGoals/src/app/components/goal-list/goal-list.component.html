@@ -1,0 +1,145 @@
+	<div id = "goalList" *ngIf="!selected">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Goal</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Achieved?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let goal of goals" (click)="displayGoal(goal)">
+          <td>{{goal.name}}</td>
+          <td><img [src]='goal.stickerUrl' width='100' height='100'/>{{goal.category}}</td>
+          <td>{{goal.description}}</td>
+          <td *ngIf="goal.achieved === true"> <img src="https://i.imgur.com/Z3nQM2X.png" width='100' height='100'></td>
+          <td *ngIf="goal.achieved === false"> <img src="https://i.imgur.com/5Rl1NPf.png" width='100' height='100'></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!selected">
+    <h3>Add a new goal:</h3>
+    <form #newGoal='ngForm'>
+    <table>
+      <thead><tr><th>Name</th><th>Description</th><th>Sticker</th><th>Achieved</th><th>Category</th></tr></thead>
+      <tbody>
+    <tr>
+        <td><input type = "text" name = "name" placeholder = "Name of the goal" ngModel/></td>
+			  <td><input type = "text" name = "description" placeholder = "Describe it" ngModel/></td>
+		    <td>
+          <select name = "stickerUrl" ngModel>
+            <option value = "https://i.imgur.com/cxt6Mw7.png" >Person Working Out</option>
+            <option value = "https://i.imgur.com/dlTyBlo.png" >Water</option>
+            <option value = "https://i.imgur.com/xzop3fx.png" >Broccoli</option>
+            <option value = "https://i.imgur.com/ZPiYKma.png" >Person Meditating</option>
+            <option value = "https://i.imgur.com/kcqoryt.png" >Cell Phone</option>
+            <option value = "https://i.imgur.com/U8Wzl6T.png" >People Laughing</option>
+            <option value = "https://i.imgur.com/rv9QOBt.png" >Person Praying</option>
+            <option value = "https://i.imgur.com/fDIb8Sn.png" >Other/Goal Flag</option>
+          </select>
+        </td>
+			  <td><select name = "achieved" ngModel>
+				      <option value = "true">YES!</option>
+				      <option value = "false">Not yet!</option>
+			      </select></td>
+		  	<td><select name = "category" ngModel>
+            <option value = "physical health">Physical Health</option>
+            <option value = "mental health">Mental Health</option>
+            <option value = "social health">Social Health</option>
+            <option value = "spiritual health">Spiritual Health</option>
+            <option value = "other">Other</option>
+            </select></td>
+        <td><input type = "submit" name = "createGoalButton" value = "Let's do this!" (click)='createGoal(newGoal)'/></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+</div>
+<div *ngIf="selected">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Goal</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Achieved?</th>
+      </tr>
+    </thead>
+    <tbody>
+  <td>{{selected.name}}</td>
+          <td><img [src]='selected.stickerUrl' width='100' height='100'/>{{selected.category}}</td>
+          <td>{{selected.description}}</td>
+          <td *ngIf="selected.achieved === true"> <img src="https://i.imgur.com/Z3nQM2X.png" width='100' height='100'></td>
+          <td *ngIf="selected.achieved === false"> <img src="https://i.imgur.com/5Rl1NPf.png" width='100' height='100'></td>
+        </tbody>
+  </table>
+  <div *ngIf="selected.category === 'Physical health'">
+    <h5>It looks like you're working on your physical health.
+      Here are some <a href="https://www.webmd.com/men/stick-with-fitness-plan#1" target="_blank">resources.</a>
+    </h5>
+  </div>
+  <div *ngIf="selected.category === 'Mental health'">
+    <h5>It looks like you're working on your mental health.
+      Here are some <a href="https://zenhabits.net/meditation-guide/" target="_blank">resources.</a>
+    </h5>
+  </div>
+  <div *ngIf="selected.category === 'Social health'">
+    <h5>It looks like you're working on your social health.
+      Here are some <a href="https://themindfool.com/what-is-social-health/" target="_blank">resources.</a>
+    </h5>
+  </div>
+  <div *ngIf="selected.category === 'Spiritual health'">
+    <h5>It looks like you're working on your spiritual health.
+      Here are some <a href="https://wellness.ku.edu/seven-ways-improve-your-spiritual-health" target="_blank">resources.</a>
+    </h5>
+  </div>
+  <div *ngIf="selected.category === 'Other'">
+    <h5>Goal keeping can be hard but don't give up!
+      Here are some <a href="https://www.entrepreneur.com/article/284783" target="_blank">resources.</a>
+    </h5>
+  </div>
+  <h3>Would you like to ...</h3>
+  <button (click)="displayAllGoals()">Go Back</button>
+  <button (click)="setEditGoal(selected)">Edit this Goal</button>
+  <button (click)="destroy(selected.id)">Delete it!</button>
+</div>
+<div *ngIf="editGoal">
+    <h3>Add a new goal:</h3>
+    <form #newGoal='ngForm'>
+    <table>
+      <thead><tr><th>Name</th><th>Description</th><th>Sticker Url</th><th>Achieved</th><th>Category</th></tr></thead>
+      <tbody>
+    <tr>
+        <td><input type = "text" name = "name" placeholder = "Name of the goal" [(ngModel)]="editGoal.name"/></td>
+			  <td><input type = "text" name = "description" placeholder = "Describe it" [(ngModel)]="editGoal.description"/></td>
+		    <td>
+          <select name = "stickerUrl" [(ngModel)]="editGoal.stickerUrl">
+            <option value = "https://i.imgur.com/cxt6Mw7.png" >Person Working Out</option>
+            <option value = "https://i.imgur.com/dlTyBlo.png" >Water</option>
+            <option value = "https://i.imgur.com/xzop3fx.png" >Broccoli</option>
+            <option value = "https://i.imgur.com/ZPiYKma.png" >Person Meditating</option>
+            <option value = "https://i.imgur.com/kcqoryt.png" >Cell Phone</option>
+            <option value = "https://i.imgur.com/U8Wzl6T.png" >People Laughing</option>
+            <option value = "https://i.imgur.com/rv9QOBt.png" >Person Praying</option>
+            <option value = "https://i.imgur.com/fDIb8Sn.png" >Other/Goal Flag</option>
+          </select>
+        </td>
+			  <td><select name = "achieved" [(ngModel)]="editGoal.achieved">
+				      <option value = "true">YES!</option>
+				      <option value = "false">Not yet!</option>
+			      </select></td>
+		  	<td><select name = "category" [(ngModel)]="editGoal.category">
+            <option value = "Physical health">Physical Health</option>
+            <option value = "Mental health">Mental Health</option>
+            <option value = "Social health">Social Health</option>
+            <option value = "Spiritual health">Spiritual Health</option>
+            <option value = "Other">Other</option>
+            </select></td>
+        <td><input type = "submit" name = "createGoalButton" value = "Let's do this!" (click)='updateGoal(editGoal)'/></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+</div>
