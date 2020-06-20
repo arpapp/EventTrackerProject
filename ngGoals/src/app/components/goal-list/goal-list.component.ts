@@ -46,6 +46,7 @@ export class GoalListComponent implements OnInit {
         console.error('alert alert goal creation failure');
       }
     )
+    form.reset();
   }
 
   updateGoal(updateGoal){
