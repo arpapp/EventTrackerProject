@@ -79,6 +79,7 @@ export class GoalListComponent implements OnInit {
   }
   displayAllGoals(){
     this.selected = null;
+    this.editGoal = null;
   }
 
   setEditGoal(goal: Goal){

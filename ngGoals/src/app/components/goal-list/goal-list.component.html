@@ -51,7 +51,7 @@
             <option value = "spiritual health">Spiritual Health</option>
             <option value = "other">Other</option>
             </select></td>
-        <td><input type = "submit" name = "createGoalButton" value = "Let's do this!" (click)='createGoal(newGoal)'/></td>
+        <td><input type = "submit" name = "createGoalButton" value = "Let's do this!" class="btn btn-primary" (click)='createGoal(newGoal)'/></td>
       </tr>
     </tbody>
   </table>
@@ -101,9 +101,9 @@
     </h5>
   </div>
   <h3>Would you like to ...</h3>
-  <button (click)="displayAllGoals()">Go Back</button>
-  <button (click)="setEditGoal(selected)">Edit this Goal</button>
-  <button (click)="destroy(selected.id)">Delete it!</button>
+  <button class="btn btn-primary" (click)="displayAllGoals()">Go Back</button>
+  <button class="btn btn-success" (click)="setEditGoal(selected)">Edit this Goal</button>
+  <button class="btn btn-danger" (click)="destroy(selected.id)">Delete it!</button>
 </div>
 <div *ngIf="editGoal">
     <h3>Add a new goal:</h3>
@@ -137,9 +137,12 @@
             <option value = "Spiritual health">Spiritual Health</option>
             <option value = "Other">Other</option>
             </select></td>
-        <td><input type = "submit" name = "createGoalButton" value = "Let's do this!" (click)='updateGoal(editGoal)'/></td>
+        <td><input type = "submit" name = "editGoalButton" value = "Let's do this!" class="btn btn-success" (click)='updateGoal(editGoal)'/></td>
+        <td><input type = "submit" name = "cancel" value = "Cancel" class="btn btn-danger"  (click)='this.editGoal = null;'/></td>
       </tr>
     </tbody>
   </table>
 </form>
 </div>
+
+
